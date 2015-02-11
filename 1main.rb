@@ -1,5 +1,5 @@
 require "sinatra"
-require_relative "/warehouse/main.rb"
+
 
 get '/' do
   erb :homepage
