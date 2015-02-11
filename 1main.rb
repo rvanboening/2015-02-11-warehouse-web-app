@@ -10,6 +10,7 @@ get "/add" do
 end
 
 get "/add_product_results" do
+  @add_product_results=(params)
   erb :add_product_results
 end
 
