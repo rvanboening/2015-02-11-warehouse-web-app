@@ -1,5 +1,11 @@
 require "sinatra"
+require "sqlite3"
+require "pry"
+require_relative 'database_setup.rb'
 
+require_relative 'item.rb'
+require_relative 'category.rb'
+require_relative 'location.rb'
 
 get '/' do
   erb :homepage
@@ -10,9 +16,32 @@ get "/add" do
 end
 
 get "/add_product_results" do
-  @add_product_results=(params)
+
+  @item = Item.new(params["item_name"], params["item_cat"], params["item_loc"], params["item_quant"], params["item_price"], params["item_desc"])
+  @item.insert
   erb :add_product_results
 end
+
+get "/delete" do
+  erb :delete
+end
+
+get "/delete_product_confirm" do
+  Item.delete(params["value"])
+  
+  erb :delete_product_confirm
+end
+
+get "/edit" do
+  erb :edit
+end
+
+get "/edit_product_confirm" do
+  Item.edit(params["value"])
+  
+  erb :delete_product_confirm
+end
+
 
 
 # params = Item.new(item_name, item_cat, item_loc, item_quant, item_price, item_desc)

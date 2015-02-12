@@ -20,6 +20,7 @@
 
 class Item
   attr_accessor :item_name, :item_cat, :item_loc, :item_quant, :item_price, :item_desc
+  attr_reader :id 
   
   def initialize(item_name,item_cat,item_loc,item_quant,item_price,item_desc)
     @item_name = item_name
@@ -53,7 +54,7 @@ class Item
     puts query_string
     
     DATABASE.execute("INSERT INTO items (name, category, location, quantity, cost, description) VALUES (#{query_string})")  
-    
+    @id = DATABASE.last_insert_row_id
     puts "Inserted successfully!"  
   end
   
@@ -63,7 +64,7 @@ class Item
     if value.is_a?(Integer) 
       DATABASE.execute("DELETE FROM items WHERE id = #{value}")
     else
-      DATABASE.execute("o")
+      DATABASE.execute("DELETE FROM items WHERE name = '#{value}'")
     end
   end
   
