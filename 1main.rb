@@ -23,7 +23,7 @@ get "/add_product_results" do
 end
 
 get "/delete" do
-  @list_items =Items.list_item_details_erb
+  @list_item=Item.list_item_details
   erb :delete
 end
 
@@ -34,14 +34,18 @@ get "/delete_product_confirm" do
 end
 
 get "/edit" do
-
+  @list_item=Item.list_item_details
   erb :edit
 end
 
-get "/edit_product_confirm" do
-  Item.editpwd(params["value"])
-  
-  erb :delete_product_confirm
+get "/edit_choose_id" do
+  @item_edit = Item.fetch_item_by(params["id"].to_i,1)
+ erb :edit_choose_id # "#{@item_edit[0]["name"]}"
+end
+
+get "/edit_product_results" do
+  @item.edit(params["item_name"], params["item_cat"], params["item_loc"], params["item_quant"], params["item_price"], params["item_desc"])
+  erb :edit_products_results
 end
 
 

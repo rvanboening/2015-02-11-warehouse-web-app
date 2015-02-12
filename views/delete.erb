@@ -1,11 +1,16 @@
 <h1>Delete Product</h1>
 
-<% @list_all.each do |hash| %>
-    <p><%= hash["id"] %> - <b> <%= hash["city"] %></b></p>
+
+<%@list_item.each do |hash| %>
+<p> <%= hash["id"] %> - <b> 
+    <%= hash["name"] %> - <b> 
+    <%= hash["location"] %> - <b> 
+    <%= hash["description"] %>
+</p>
 <% end %>
 
 <form action="/delete_product_confirm">
-    <p>Enter Item Name or ID</p>
+    <p>Enter Item ID number</p>
     <input type="text" name="value">
         
     <% Item.list_items %>

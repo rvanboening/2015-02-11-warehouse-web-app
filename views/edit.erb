@@ -1,25 +1,16 @@
 <h1>What product would you like to edit?</h1>
 
-<%=Item.list_item_details%>
+<%@list_item.each do |hash| %>
+<p> <%= hash["id"] %> - <b> 
+    <%= hash["name"] %> - <b> 
+    <%= hash["location"] %> - <b> 
+    <%= hash["description"] %>
+</p>
+<% end %>
 
-<form action="/edit_product_results">
-    <p>Edit Item Name</p>
-    <input type="text" name="item_name">
+<form action="/edit_choose_id">
+    <p>Enter Item ID that you would like to edit.</p>
+    <input type="text" name="id">
     
-    <p>Edit Item Category</p>    
-    <input type="text" name="item_cat">
-      
-    <p>Edit Item Quantity</p>
-    <input type="number" name="item_loc">  
-    
-    <p>Edit Item Location</p>
-    <input type="text" name="item_quant">  
-    
-    <p>Edit Item Price</p>
-    <input type="text" name="item_price">
-    
-    <p>Edit Item Description</p>
-    <input type="text" name="item_desc">
-        
-    <input type ="submit">   
+    <input type ="submit">
 </form>
