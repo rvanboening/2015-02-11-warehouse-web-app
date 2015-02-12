@@ -23,21 +23,23 @@ get "/add_product_results" do
 end
 
 get "/delete" do
+  @list_items =Items.list_item_details_erb
   erb :delete
 end
 
 get "/delete_product_confirm" do
-  Item.delete(params["value"])
+  Item.delete(params["value"].to_i)
   
   erb :delete_product_confirm
 end
 
 get "/edit" do
+
   erb :edit
 end
 
 get "/edit_product_confirm" do
-  Item.edit(params["value"])
+  Item.editpwd(params["value"])
   
   erb :delete_product_confirm
 end

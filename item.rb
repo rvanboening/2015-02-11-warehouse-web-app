@@ -78,6 +78,21 @@ class Item
       DATABASE.execute("SELECT * FROM items")
   end
   
+  #list all items for .erb try 2
+  def self.list_item_details_erb
+    DATABASE.execute("SELECT * FROM items")
+  end
+  
+  
+  
+  # #list all items information in a nice way in .erb
+  # def self.list_item_details_erb
+  #     print=DATABASE.execute("SELECT * FROM items")
+  #     print.each do |x|
+  #       puts "#{key}: #{value}"
+  #     end
+  # end
+
   def self.fetch_item_by(input,num)
     if num == 1
       DATABASE.execute("Select * FROM items WHERE id = #{input}")
