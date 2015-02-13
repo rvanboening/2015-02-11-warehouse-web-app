@@ -1,11 +1,14 @@
+
 require "sinatra"
 require "sqlite3"
 require "pry"
-require_relative 'database_setup.rb'
 
+require_relative 'database_setup.rb'
 require_relative 'item.rb'
 require_relative 'category.rb'
 require_relative 'location.rb'
+
+require_relative "helper.rb"
 
 get '/' do
   erb :homepage
@@ -40,15 +43,19 @@ end
 
 get "/edit_choose_id" do
   @item_edit = Item.fetch_item_by(params["id"].to_i,1)
- erb :edit_choose_id # "#{@item_edit[0]["name"]}"
+ erb :edit_choose_id
 end
 
 get "/edit_product_results" do
-  @item.edit(params["item_name"], params["item_cat"], params["item_loc"], params["item_quant"], params["item_price"], params["item_desc"])
-  erb :edit_products_results
+  @item=Item.edit(params["item_name"], params["item_cat"], params["item_loc"], params["item_quant"].to_i, params["item_price"].to_f, params["item_desc"], params["id"].to_i)
+  erb :edit_product_results
 end
 
+get "/fetch" do
+  fetch_item_by(params)
+  erb :fetch
+end
 
-
-# params = Item.new(item_name, item_cat, item_loc, item_quant, item_price, item_desc)
-
+get "/fetch_choose" do 
+  erb :fetch_choose
+end
