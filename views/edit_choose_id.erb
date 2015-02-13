@@ -2,28 +2,27 @@
 
 <form action="/edit_product_results">
     <p>Enter Item Name</p>
-    <input type="text" name="item_name" value="<%= @item_edit[0]["name"] %>">
+    <input type="text" name="item_name" value="<%= @item_edit[0]["name"]%>">
     
     <p>Enter Item Category</p>    
-    <input type="text" name="item_cat" value="<%= @item_edit[0]["item_cat"] %>">
+    <input type="text" name="item_cat" value="<%= @item_edit[0]["category"]%>">
       
     <p>Enter Item Quantity</p>
-    <input type="number" name="item_loc">  
+    <input type="number" name="item_quant" value="<%=@item_edit[0]["quantity"]%>"> 
     
     <p>Enter Item Location</p>
-    <input type="text" name="item_quant">  
+    <input type="text" name="item_location" value="<%= @item_edit[0]["location"]%>">
     
     <p>Enter Item Price</p>
-    <input type="text" name="item_price">
+    <input type="text" name="item_price" value="<%= @item_edit[0]["cost"]%>">
     
     <p>Enter Item Description</p>
-    <input type="text" name="item_desc">
+    <input type="text" name="item_desc" value="<%=@item_edit[0]["description"]%>">
+    
+    <input type="hidden" name="id" value="<%= @item_edit[0]["id"]%>">
         
     <input type ="submit">   
 </form>
 
 
-
-<h3><a href="/">Go Back to the Homepage</a></h3
-    
 
