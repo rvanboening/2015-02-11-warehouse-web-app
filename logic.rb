@@ -1,4 +1,4 @@
-module Helper
+module Logic
 
   #Public: fetch_item_by
   # Selects a record of information from a table
@@ -14,11 +14,11 @@ module Helper
 
   def fetch_item_by(num)
     if num == 1
-      DATABASE.execute("Select * FROM items")
+      DATABASE.execute("SELECT * FROM items")
     elsif num == 2
-      DATABASE.execute("Select * FROM categories")
+      DATABASE.execute("SELECT * FROM categories")
     elsif num == 3
-      DATABASE.execute("Select * FROM locations")
+      DATABASE.execute("SELECT * FROM locations")
     end
   end
 end

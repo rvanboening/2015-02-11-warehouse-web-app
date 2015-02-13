@@ -1,1 +1,12 @@
-<p> Yo </p>
+<h1> Here is your data. </h1>
+
+<h2> Here are the records from #table_name </h2>
+
+<% @table_data.each do |hash| %>
+<p> <%= hash["id"] %> - <b> 
+    <%= hash["name"] %> - <b> 
+    <%= hash["location"] %> - <b> 
+    <%= hash["description"] %> - <b>
+    <%= hash["cost"]%> 
+</p>
+<% end %>

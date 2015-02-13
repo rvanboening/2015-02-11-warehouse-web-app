@@ -2,13 +2,15 @@
 require "sinatra"
 require "sqlite3"
 require "pry"
-
+require_relative "logic.rb"
 require_relative 'database_setup.rb'
 require_relative 'item.rb'
 require_relative 'category.rb'
 require_relative 'location.rb'
 
-require_relative "helper.rb"
+
+
+helpers Logic
 
 get '/' do
   erb :homepage
@@ -52,10 +54,10 @@ get "/edit_product_results" do
 end
 
 get "/fetch" do
-  fetch_item_by(params)
   erb :fetch
 end
 
 get "/fetch_choose" do 
+  @table_data=Item.fetch_item_by(params["num"].to_i)
   erb :fetch_choose
 end

@@ -20,8 +20,7 @@
 
 class Item
   
-  include Helper
-  extend Helper
+  extend Logic
   
   attr_accessor :item_name, :item_cat, :item_loc, :item_quant, :item_price, :item_desc
   attr_reader :id 
@@ -146,17 +145,17 @@ class Item
   # State Changes: 
   # no changes
 
-  def self.fetch_item_by(input,num)
-    if num == 1
-      DATABASE.execute("Select * FROM items WHERE id = #{input}")
-    elsif num == 2
-      DATABASE.execute("Select * FROM items WHERE name = '#{input}'")
-    elsif num == 3
-      DATABASE.execute("Select * FROM items WHERE category = '#{input}'")
-    else num == 4
-      DATABASE.execute("Select * FROM items WHERE location = '#{input}'")
-    end
-  end
+        # def self.fetch_item_by(input,num)
+        #   if num == 1
+        #     DATABASE.execute("Select * FROM items WHERE id = #{input}")
+        #   elsif num == 2
+        #     DATABASE.execute("Select * FROM items WHERE name = '#{input}'")
+        #   elsif num == 3
+        #     DATABASE.execute("Select * FROM items WHERE category = '#{input}'")
+        #   else num == 4
+        #     DATABASE.execute("Select * FROM items WHERE location = '#{input}'")
+        #   end
+        # end
   
   # Public: #edit
   # collects id of record and replaces it with new 
